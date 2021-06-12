@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "id": "candlestick",
+  "version": "${version}",
+  "name": "Candlestick",
+  "description": "Holder for candles",
+  "authors": [
+    "16_"
+  ],
+  "contact": {
+    "sources": "https://github.com/16underscore"
+  },
+  "license": "MIT",
+  "icon": "assets/candlestick/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "me.sixteen_.candlestick.Candlestick"
+    ]
+  },
+  "mixins": [
+    "candlestick.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.11.3",
+    "fabric": "*",
+    "minecraft": "1.17.x",
+    "java": ">=16"
+  }
+}
