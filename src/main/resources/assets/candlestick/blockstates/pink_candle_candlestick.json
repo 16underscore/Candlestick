@@ -1,0 +1,10 @@
+{
+    "variants": {
+        "lit=false": {
+            "model": "candlestick:block/pink_candle_candlestick"
+        },
+        "lit=true": {
+            "model": "candlestick:block/pink_candle_candlestick_lit"
+        }
+    }
+}

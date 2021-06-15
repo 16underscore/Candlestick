@@ -1,0 +1,8 @@
+{
+    "parent": "candlestick:block/template_candlestick_with_candle",
+    "textures": {
+        "candle": "minecraft:block/red_candle",
+        "candlestick": "candlestick:block/candlestick",
+        "particle": "candlestick:block/candlestick"
+    }
+}
