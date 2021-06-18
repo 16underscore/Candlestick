@@ -15,8 +15,7 @@ public final class CandlestickItems {
     public static final BlockItem CANDLESTICK;
 
     static {
-        CANDLESTICK = register("candlestick",
-                new BlockItem(CandlestickBlocks.CANDLESTICK, new FabricItemSettings().group(ItemGroup.DECORATIONS)));
+        CANDLESTICK = register("candlestick", new BlockItem(CandlestickBlocks.CANDLESTICK, new FabricItemSettings().group(ItemGroup.DECORATIONS)));
     }
 
     private static final BlockItem register(final String id, final BlockItem block) {

@@ -23,11 +23,11 @@ import net.minecraft.world.event.GameEvent;
 /**
  * @author 16_
  */
-public final class CandlestickBlock extends Block {
+public class CandlestickBlock extends Block {
 
     private static final VoxelShape BOUNDING_SHAPE = Block.createCuboidShape(6.0D, 0.0D, 6.0D, 10.0D, 5.0D, 10.0D);
 
-    public CandlestickBlock(final Settings settings) {
+    protected CandlestickBlock(final Settings settings) {
         super(settings);
     }
 
