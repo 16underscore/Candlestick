@@ -7,6 +7,7 @@ import net.minecraft.block.ShapeContext;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.stat.Stats;
@@ -52,6 +53,15 @@ public class CandlestickBlock extends Block {
                 player.incrementStat(Stats.USED.getOrCreateStat(item));
                 return ActionResult.SUCCESS;
             }
+        } else if (itemStack.isOf(Items.SEA_PICKLE)) {
+            if (!player.isCreative()) {
+                itemStack.decrement(1);
+            }
+            world.playSound((PlayerEntity) null, pos, SoundEvents.ENTITY_SLIME_JUMP, SoundCategory.BLOCKS, 1.0F, 1.0F);
+            world.setBlockState(pos, CandlestickBlocks.SEA_PICKLE_CANDLESTICK.getDefaultState());
+            world.emitGameEvent(player, GameEvent.BLOCK_CHANGE, pos);
+            player.incrementStat(Stats.USED.getOrCreateStat(item));
+            return ActionResult.SUCCESS;
         }
         return ActionResult.PASS;
     }

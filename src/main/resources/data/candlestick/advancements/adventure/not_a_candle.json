@@ -1,0 +1,35 @@
+{
+    "parent": "minecraft:adventure/root",
+    "display": {
+        "icon": {
+            "item": "minecraft:sea_pickle"
+        },
+        "title": {
+            "translate": "advancements.adventure.not_a_candle.title"
+        },
+        "description": {
+            "translate": "advancements.adventure.not_a_candle.description"
+        },
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "criteria": {
+        "sea_pickle_on_candlestick": {
+            "trigger": "minecraft:item_used_on_block",
+            "conditions": {
+                "location": {
+                    "block": {
+                        "block": "candlestick:candlestick"
+                    }
+                },
+                "item": {
+                    "items": [
+                        "minecraft:sea_pickle"
+                    ]
+                }
+            }
+        }
+    }
+}

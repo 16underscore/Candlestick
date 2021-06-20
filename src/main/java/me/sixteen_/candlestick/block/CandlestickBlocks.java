@@ -57,7 +57,7 @@ public final class CandlestickBlocks {
 		GREEN_CANDLE_CANDLESTICK = register("green_candle_candlestick", new CandleCandlestickBlock(Blocks.GREEN_CANDLE, AbstractBlock.Settings.copy(CANDLE_CANDLESTICK)));
 		RED_CANDLE_CANDLESTICK = register("red_candle_candlestick", new CandleCandlestickBlock(Blocks.RED_CANDLE, AbstractBlock.Settings.copy(CANDLE_CANDLESTICK)));
 		BLACK_CANDLE_CANDLESTICK = register("black_candle_candlestick", new CandleCandlestickBlock(Blocks.BLACK_CANDLE, AbstractBlock.Settings.copy(CANDLE_CANDLESTICK)));
-		SEA_PICKLE_CANDLESTICK = register("sea_pickle_candlestick", new CandlestickBlock(AbstractBlock.Settings.copy(CANDLESTICK)));
+		SEA_PICKLE_CANDLESTICK = register("sea_pickle_candlestick", new SeaPickleCandlestickBlock(AbstractBlock.Settings.copy(CANDLESTICK)));
 	}
 
 	private static final ToIntFunction<BlockState> createLightLevelFromLitBlockState(final int litLevel) {
