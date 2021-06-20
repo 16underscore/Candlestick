@@ -44,7 +44,7 @@ public final class CandleCandlestickBlock extends AbstractCandleBlock {
 		CANDLE_SHAPE = Block.createCuboidShape(7.0D, 4.0D, 7.0D, 9.0D, 10.0D, 9.0D);
 		SHAPE = VoxelShapes.union(CANDLESTICK_SHAPE, CANDLE_SHAPE);
 		CANDLES_TO_CANDLESTICK = Maps.newHashMap();
-		PARTICLE_OFFSETS = ImmutableList.of(new Vec3d(0.5D, 1.0D, 0.5D));
+		PARTICLE_OFFSETS = ImmutableList.of(new Vec3d(0.5D, 0.75D, 0.5D));
 	}
 
 	protected CandleCandlestickBlock(final Block candle, final Settings settings) {
@@ -58,7 +58,7 @@ public final class CandleCandlestickBlock extends AbstractCandleBlock {
 	}
 
 	public static final boolean canBeLit(final BlockState state) {
-		return !state.get(LIT).booleanValue();
+		return !(boolean)state.get(LIT);
 	}
 
 	@Override
