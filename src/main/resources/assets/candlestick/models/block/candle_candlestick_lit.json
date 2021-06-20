@@ -2,7 +2,7 @@
     "parent": "candlestick:block/template_candlestick_with_candle",
     "textures": {
         "candle": "minecraft:block/candle_lit",
-        "0": "candlestick:block/candlestick",
+        "candlestick": "candlestick:block/candlestick",
         "particle": "candlestick:block/candlestick"
     }
 }

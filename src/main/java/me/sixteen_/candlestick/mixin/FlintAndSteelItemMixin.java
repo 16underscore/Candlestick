@@ -21,7 +21,7 @@ import net.minecraft.world.event.GameEvent;
 @Mixin(FlintAndSteelItem.class)
 public abstract class FlintAndSteelItemMixin {
     
-    @Inject(method = "useOnBlock", at = @At("HEAD"))
+    @Inject(method = "useOnBlock", at = @At("HEAD"), cancellable = true)
     public final void useOnBlock(ItemUsageContext context, final CallbackInfoReturnable<ActionResult> info) {
         final World world = context.getWorld();
         final BlockPos blockPos = context.getBlockPos();

@@ -11,7 +11,7 @@ public final class Candlestick implements ModInitializer {
 
 	@Override
 	public final void onInitialize() {
-		new CandlestickBlocks();
-		new CandlestickItems();
+		CandlestickBlocks.load();
+		CandlestickItems.load();
 	}
 }

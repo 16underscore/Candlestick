@@ -60,6 +60,12 @@ public final class CandlestickBlocks {
 		SEA_PICKLE_CANDLESTICK = register("sea_pickle_candlestick", new SeaPickleCandlestickBlock(AbstractBlock.Settings.copy(CANDLESTICK)));
 	}
 
+	private CandlestickBlocks() {
+	}
+
+	public static final void load() {
+	}
+
 	private static final ToIntFunction<BlockState> createLightLevelFromLitBlockState(final int litLevel) {
 		return (state) -> {
 			return (Boolean) state.get(Properties.LIT) ? litLevel : 0;

@@ -21,7 +21,7 @@ import net.minecraft.world.event.GameEvent;
 @Mixin(FireChargeItem.class)
 public abstract class FireChargeItemMixin {
 
-    @Inject(method = "useOnBlock", at = @At("HEAD"))
+    @Inject(method = "useOnBlock", at = @At("HEAD"), cancellable = true)
     public final void useOnBlock(ItemUsageContext context, final CallbackInfoReturnable<ActionResult> info) {
         final World world = context.getWorld();
         final BlockPos blockPos = context.getBlockPos();

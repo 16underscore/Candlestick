@@ -9,6 +9,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.stat.Stats;
 import net.minecraft.tag.ItemTags;
@@ -41,28 +42,28 @@ public class CandlestickBlock extends Block {
     public final ActionResult onUse(final BlockState state, final World world, final BlockPos pos, final PlayerEntity player, final Hand hand, final BlockHitResult hit) {
         final ItemStack itemStack = player.getStackInHand(hand);
         final Item item = itemStack.getItem();
+        SoundEvent sound;
+        BlockState blockState;
         if (itemStack.isIn(ItemTags.CANDLES)) {
             final Block block = Block.getBlockFromItem(item);
-            if (block instanceof CandleBlock) {
-                if (!player.isCreative()) {
-                    itemStack.decrement(1);
-                }
-                world.playSound((PlayerEntity) null, pos, SoundEvents.BLOCK_CANDLE_PLACE, SoundCategory.BLOCKS, 1.0F, 1.0F);
-                world.setBlockState(pos, CandleCandlestickBlock.getCandlestickFromCandle(block));
-                world.emitGameEvent(player, GameEvent.BLOCK_CHANGE, pos);
-                player.incrementStat(Stats.USED.getOrCreateStat(item));
-                return ActionResult.SUCCESS;
+            if (!(block instanceof CandleBlock)) {
+                return ActionResult.PASS;
             }
+            sound = SoundEvents.BLOCK_CANDLE_PLACE;
+            blockState = CandleCandlestickBlock.getCandlestickFromCandle(block);
         } else if (itemStack.isOf(Items.SEA_PICKLE)) {
-            if (!player.isCreative()) {
-                itemStack.decrement(1);
-            }
-            world.playSound((PlayerEntity) null, pos, SoundEvents.ENTITY_SLIME_JUMP, SoundCategory.BLOCKS, 1.0F, 1.0F);
-            world.setBlockState(pos, CandlestickBlocks.SEA_PICKLE_CANDLESTICK.getDefaultState());
-            world.emitGameEvent(player, GameEvent.BLOCK_CHANGE, pos);
-            player.incrementStat(Stats.USED.getOrCreateStat(item));
-            return ActionResult.SUCCESS;
+            sound = SoundEvents.ENTITY_SLIME_JUMP;
+            blockState = CandlestickBlocks.SEA_PICKLE_CANDLESTICK.getDefaultState();
+        } else {
+            return ActionResult.PASS;
         }
-        return ActionResult.PASS;
+        if (!player.isCreative()) {
+            itemStack.decrement(1);
+        }
+        world.setBlockState(pos, blockState);
+        world.playSound((PlayerEntity) null, pos, sound, SoundCategory.BLOCKS, 1.0F, 1.0F);
+        world.emitGameEvent(player, GameEvent.BLOCK_CHANGE, pos);
+        player.incrementStat(Stats.USED.getOrCreateStat(item));
+        return ActionResult.SUCCESS;
     }
 }
