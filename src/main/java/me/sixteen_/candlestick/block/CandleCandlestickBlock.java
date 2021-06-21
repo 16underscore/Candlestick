@@ -5,6 +5,7 @@ import java.util.Map;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Maps;
 
+import me.sixteen_.candlestick.tag.CandlestickBlockTags;
 import net.minecraft.block.AbstractCandleBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -58,7 +59,9 @@ public final class CandleCandlestickBlock extends AbstractCandleBlock {
 	}
 
 	public static final boolean canBeLit(final BlockState state) {
-		return !(boolean)state.get(LIT);
+		return state.isIn(CandlestickBlockTags.CANDLE_CANDLESTICKS, (statex) -> {
+			return statex.contains(LIT) && !(Boolean) state.get(LIT);
+		});
 	}
 
 	@Override

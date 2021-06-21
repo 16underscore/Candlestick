@@ -18,12 +18,6 @@ public final class CandlestickItems {
         CANDLESTICK = register("candlestick", new BlockItem(CandlestickBlocks.CANDLESTICK, new FabricItemSettings().group(ItemGroup.DECORATIONS)));
     }
 
-    private CandlestickItems() {
-	}
-
-    public static final void load() {
-	}
-
     private static final BlockItem register(final String id, final BlockItem block) {
         return (BlockItem) Registry.register(Registry.ITEM, new Identifier("candlestick", id), block);
     }

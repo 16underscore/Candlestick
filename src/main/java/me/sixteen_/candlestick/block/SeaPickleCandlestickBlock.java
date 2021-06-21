@@ -16,7 +16,7 @@ import net.minecraft.world.WorldAccess;
  * @author 16_
  */
 public final class SeaPickleCandlestickBlock extends Block {
-    
+
 	private static final VoxelShape SHAPE;
 
 	static {
