@@ -5,7 +5,7 @@ import java.util.Map;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Maps;
 
-import me.sixteen_.candlestick.tag.CandlestickBlockTags;
+import net.fabricmc.fabric.api.tag.TagRegistry;
 import net.minecraft.block.AbstractCandleBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -17,8 +17,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
+import net.minecraft.tag.Tag;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -34,12 +36,14 @@ import net.minecraft.world.WorldAccess;
  */
 public final class CandleCandlestickBlock extends AbstractCandleBlock {
 
+	public static final Tag<Block> CANDLESTICKS;
 	public static final BooleanProperty LIT;
 	private static final VoxelShape CANDLESTICK_SHAPE, CANDLE_SHAPE, SHAPE;
 	private static final Map<Block, CandleCandlestickBlock> CANDLES_TO_CANDLESTICK;
 	private static final Iterable<Vec3d> PARTICLE_OFFSETS;
 
 	static {
+		CANDLESTICKS = TagRegistry.block(new Identifier("candlestick", "candle_candlesticks"));
 		LIT = AbstractCandleBlock.LIT;
 		CANDLESTICK_SHAPE = Block.createCuboidShape(6.0D, 0.0D, 6.0D, 10.0D, 5.0D, 10.0D);
 		CANDLE_SHAPE = Block.createCuboidShape(7.0D, 4.0D, 7.0D, 9.0D, 10.0D, 9.0D);
@@ -59,7 +63,7 @@ public final class CandleCandlestickBlock extends AbstractCandleBlock {
 	}
 
 	public static final boolean canBeLit(final BlockState state) {
-		return state.isIn(CandlestickBlockTags.CANDLE_CANDLESTICKS, (statex) -> {
+		return state.isIn(CANDLESTICKS, (statex) -> {
 			return statex.contains(LIT) && !(Boolean) state.get(LIT);
 		});
 	}
