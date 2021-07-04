@@ -25,7 +25,7 @@ import net.minecraft.world.event.GameEvent;
 /**
  * @author 16_
  */
-public class CandlestickBlock extends Block {
+public final class CandlestickBlock extends Block {
 
     private static final VoxelShape BOUNDING_SHAPE = Block.createCuboidShape(6.0D, 0.0D, 6.0D, 10.0D, 5.0D, 10.0D);
 
@@ -52,7 +52,7 @@ public class CandlestickBlock extends Block {
             sound = SoundEvents.BLOCK_CANDLE_PLACE;
             blockState = CandleCandlestickBlock.getCandlestickFromCandle(block);
         } else if (itemStack.isOf(Items.SEA_PICKLE)) {
-            sound = SoundEvents.ENTITY_SLIME_JUMP;
+            sound = SoundEvents.BLOCK_SLIME_BLOCK_PLACE;
             blockState = CandlestickBlocks.SEA_PICKLE_CANDLESTICK.getDefaultState();
         } else {
             return ActionResult.PASS;

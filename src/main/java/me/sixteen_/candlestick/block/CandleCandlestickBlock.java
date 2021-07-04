@@ -36,15 +36,15 @@ import net.minecraft.world.WorldAccess;
  */
 public final class CandleCandlestickBlock extends AbstractCandleBlock {
 
-	public static final Tag<Block> CANDLESTICKS;
 	public static final BooleanProperty LIT;
+	public static final Tag<Block> CANDLESTICKS;
 	private static final VoxelShape CANDLESTICK_SHAPE, CANDLE_SHAPE, SHAPE;
 	private static final Map<Block, CandleCandlestickBlock> CANDLES_TO_CANDLESTICK;
 	private static final Iterable<Vec3d> PARTICLE_OFFSETS;
 
 	static {
-		CANDLESTICKS = TagRegistry.block(new Identifier("candlestick", "candle_candlesticks"));
 		LIT = AbstractCandleBlock.LIT;
+		CANDLESTICKS = TagRegistry.block(new Identifier("candlestick", "candle_candlesticks"));
 		CANDLESTICK_SHAPE = Block.createCuboidShape(6.0D, 0.0D, 6.0D, 10.0D, 5.0D, 10.0D);
 		CANDLE_SHAPE = Block.createCuboidShape(7.0D, 4.0D, 7.0D, 9.0D, 10.0D, 9.0D);
 		SHAPE = VoxelShapes.union(CANDLESTICK_SHAPE, CANDLE_SHAPE);

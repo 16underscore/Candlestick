@@ -16,18 +16,20 @@
         "hidden": false
     },
     "criteria": {
-        "sea_pickle_on_candlestick": {
+        "requirement": {
             "trigger": "minecraft:item_used_on_block",
             "conditions": {
-                "location": {
-                    "block": {
-                        "block": "candlestick:candlestick"
-                    }
-                },
                 "item": {
                     "items": [
                         "minecraft:sea_pickle"
                     ]
+                },
+                "location": {
+                    "block": {
+                        "blocks": [
+                            "candlestick:candlestick"
+                        ]
+                    }
                 }
             }
         }
