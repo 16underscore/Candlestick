@@ -15,7 +15,7 @@ import net.minecraft.entity.ai.pathing.NavigationType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
-import net.minecraft.state.StateManager;
+import net.minecraft.state.StateManager.Builder;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.tag.Tag;
 import net.minecraft.util.ActionResult;
@@ -54,7 +54,7 @@ public final class CandleCandlestickBlock extends AbstractCandleBlock {
 
 	protected CandleCandlestickBlock(final Block candle, final Settings settings) {
 		super(settings);
-		this.setDefaultState((BlockState) ((BlockState) this.stateManager.getDefaultState()).with(LIT, false));
+		setDefaultState((BlockState) ((BlockState) stateManager.getDefaultState()).with(LIT, false));
 		CANDLES_TO_CANDLESTICK.put(candle, this);
 	}
 
@@ -106,7 +106,7 @@ public final class CandleCandlestickBlock extends AbstractCandleBlock {
 	}
 
 	@Override
-	protected final void appendProperties(final StateManager.Builder<Block, BlockState> builder) {
+	protected final void appendProperties(final Builder<Block, BlockState> builder) {
 		builder.add(LIT);
 	}
 }
