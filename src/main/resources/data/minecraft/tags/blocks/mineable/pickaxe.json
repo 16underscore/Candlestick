@@ -1,0 +1,24 @@
+{
+	"replace": false,
+	"values": [
+		"candlestick:candlestick",
+		"candlestick:candle_candlestick",
+        "candlestick:white_candle_candlestick",
+        "candlestick:orange_candle_candlestick",
+        "candlestick:magenta_candle_candlestick",
+        "candlestick:light_blue_candle_candlestick",
+        "candlestick:yellow_candle_candlestick",
+        "candlestick:lime_candle_candlestick",
+        "candlestick:pink_candle_candlestick",
+        "candlestick:gray_candle_candlestick",
+        "candlestick:light_gray_candle_candlestick",
+        "candlestick:cyan_candle_candlestick",
+        "candlestick:purple_candle_candlestick",
+        "candlestick:blue_candle_candlestick",
+        "candlestick:brown_candle_candlestick",
+        "candlestick:green_candle_candlestick",
+        "candlestick:red_candle_candlestick",
+        "candlestick:black_candle_candlestick",
+        "candlestick:sea_pickle_candlestick"
+	]
+}

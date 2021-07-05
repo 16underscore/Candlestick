@@ -39,8 +39,8 @@ public final class CandlestickBlocks {
 			SEA_PICKLE_CANDLESTICK;
 
 	static {
-		CANDLESTICK = register("candlestick", new CandlestickBlock(FabricBlockSettings.of(Material.METAL).strength(4.0F)));
-		CANDLE_CANDLESTICK = register("candle_candlestick", new CandleCandlestickBlock(Blocks.CANDLE, AbstractBlock.Settings.copy(CANDLESTICK).luminance(createLightLevelFromLitBlockState(3))));
+		CANDLESTICK = register("candlestick", new CandlestickBlock(FabricBlockSettings.of(Material.METAL).strength(3.5F).nonOpaque()));
+		CANDLE_CANDLESTICK = register("candle_candlestick", new CandleCandlestickBlock(Blocks.CANDLE, AbstractBlock.Settings.copy(CANDLESTICK).luminance(createLightLevelFromLitBlockState(9))));
 		WHITE_CANDLE_CANDLESTICK = register("white_candle_candlestick", new CandleCandlestickBlock(Blocks.WHITE_CANDLE, AbstractBlock.Settings.copy(CANDLE_CANDLESTICK)));
 		ORANGE_CANDLE_CANDLESTICK = register("orange_candle_candlestick", new CandleCandlestickBlock(Blocks.ORANGE_CANDLE, AbstractBlock.Settings.copy(CANDLE_CANDLESTICK)));
 		MAGENTA_CANDLE_CANDLESTICK = register("magenta_candle_candlestick", new CandleCandlestickBlock(Blocks.MAGENTA_CANDLE, AbstractBlock.Settings.copy(CANDLE_CANDLESTICK)));

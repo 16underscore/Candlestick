@@ -6,8 +6,13 @@
 			"bonus_rolls": 0.0,
 			"entries": [
 				{
-					"type": "candlestick:item",
+					"type": "minecraft:item",
 					"name": "candlestick:candlestick"
+				}
+			],
+			"conditions": [
+				{
+					"condition": "minecraft:survives_explosion"
 				}
 			]
 		}
