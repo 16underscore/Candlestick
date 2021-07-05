@@ -17,6 +17,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.state.StateManager.Builder;
 import net.minecraft.state.property.BooleanProperty;
+import net.minecraft.state.property.DirectionProperty;
+import net.minecraft.state.property.Properties;
 import net.minecraft.tag.Tag;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
@@ -36,20 +38,28 @@ import net.minecraft.world.WorldAccess;
  */
 public final class CandleCandlestickBlock extends AbstractCandleBlock {
 
-	public static final BooleanProperty LIT;
-	public static final Tag<Block> CANDLESTICKS;
-	private static final VoxelShape CANDLESTICK_SHAPE, CANDLE_SHAPE, SHAPE;
+	private static final BooleanProperty LIT;
+	public static final DirectionProperty FACING;
+	private static final VoxelShape DOWN_SHAPE, NORTH_SHAPE, EAST_SHAPE, SOUTH_SHAPE, WEST_SHAPE;
+	private static final Tag<Block> CANDLESTICKS;
 	private static final Map<Block, CandleCandlestickBlock> CANDLES_TO_CANDLESTICK;
-	private static final Iterable<Vec3d> PARTICLE_OFFSETS;
+	private static final Iterable<Vec3d> DOWN_PARTICLE_OFFSETS, NORTH_PARTICLE_OFFSETS, EAST_PARTICLE_OFFSETS, SOUTH_PARTICLE_OFFSETS, WEST_PARTICLE_OFFSETS;
 
 	static {
 		LIT = AbstractCandleBlock.LIT;
+		FACING = Properties.HOPPER_FACING;
+		DOWN_SHAPE = VoxelShapes.union(CandlestickBlock.DOWN_SHAPE, Block.createCuboidShape(7.0D, 4.0D, 7.0D, 9.0D, 10.0D, 9.0D));
+		NORTH_SHAPE = VoxelShapes.union(CandlestickBlock.NORTH_SHAPE, Block.createCuboidShape(7.0D, 6.0D, 1.0D, 9.0D, 12.0D, 3.0D));
+		EAST_SHAPE = VoxelShapes.union(CandlestickBlock.EAST_SHAPE, Block.createCuboidShape(13.0D, 6.0D, 7.0D, 15.0D, 12.0D, 9.0D));
+		SOUTH_SHAPE = VoxelShapes.union(CandlestickBlock.SOUTH_SHAPE, Block.createCuboidShape(7.0D, 6.0D, 13.0D, 9.0D, 12.0D, 15.0D));
+		WEST_SHAPE = VoxelShapes.union(CandlestickBlock.WEST_SHAPE, Block.createCuboidShape(1.0D, 6.0D, 7.0D, 3.0D, 12.0D, 9.0D));
 		CANDLESTICKS = TagRegistry.block(new Identifier("candlestick", "candle_candlesticks"));
-		CANDLESTICK_SHAPE = Block.createCuboidShape(6.0D, 0.0D, 6.0D, 10.0D, 5.0D, 10.0D);
-		CANDLE_SHAPE = Block.createCuboidShape(7.0D, 4.0D, 7.0D, 9.0D, 10.0D, 9.0D);
-		SHAPE = VoxelShapes.union(CANDLESTICK_SHAPE, CANDLE_SHAPE);
 		CANDLES_TO_CANDLESTICK = Maps.newHashMap();
-		PARTICLE_OFFSETS = ImmutableList.of(new Vec3d(0.5D, 0.75D, 0.5D));
+		DOWN_PARTICLE_OFFSETS = ImmutableList.of(new Vec3d(0.5D, 0.75D, 0.5D));
+		NORTH_PARTICLE_OFFSETS = ImmutableList.of(new Vec3d(0.5D, 0.85D, 0.125D));
+		EAST_PARTICLE_OFFSETS = ImmutableList.of(new Vec3d(0.875D, 0.85D, 0.5D));
+		SOUTH_PARTICLE_OFFSETS = ImmutableList.of(new Vec3d(0.5D, 0.85D, 0.875D));
+		WEST_PARTICLE_OFFSETS = ImmutableList.of(new Vec3d(0.125D, 0.85D, 0.5D));
 	}
 
 	protected CandleCandlestickBlock(final Block candle, final Settings settings) {
@@ -70,7 +80,19 @@ public final class CandleCandlestickBlock extends AbstractCandleBlock {
 
 	@Override
 	public final VoxelShape getOutlineShape(final BlockState state, final BlockView world, final BlockPos pos, final ShapeContext context) {
-		return SHAPE;
+		switch ((Direction) state.get(FACING)) {
+		case DOWN:
+		default:
+			return DOWN_SHAPE;
+		case NORTH:
+			return NORTH_SHAPE;
+		case SOUTH:
+			return SOUTH_SHAPE;
+		case WEST:
+			return WEST_SHAPE;
+		case EAST:
+			return EAST_SHAPE;
+		}
 	}
 
 	@Override
@@ -102,11 +124,23 @@ public final class CandleCandlestickBlock extends AbstractCandleBlock {
 
 	@Override
 	protected final Iterable<Vec3d> getParticleOffsets(final BlockState state) {
-		return PARTICLE_OFFSETS;
+		switch ((Direction) state.get(FACING)) {
+			case DOWN:
+			default:
+				return DOWN_PARTICLE_OFFSETS;
+			case NORTH:
+				return NORTH_PARTICLE_OFFSETS;
+			case SOUTH:
+				return SOUTH_PARTICLE_OFFSETS;
+			case WEST:
+				return WEST_PARTICLE_OFFSETS;
+			case EAST:
+				return EAST_PARTICLE_OFFSETS;
+			}
 	}
 
 	@Override
 	protected final void appendProperties(final Builder<Block, BlockState> builder) {
-		builder.add(LIT);
+		builder.add(LIT, FACING);
 	}
 }

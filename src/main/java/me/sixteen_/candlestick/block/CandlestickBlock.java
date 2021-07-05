@@ -32,8 +32,8 @@ import net.minecraft.world.event.GameEvent;
  */
 public final class CandlestickBlock extends Block {
 
+    public static final VoxelShape DOWN_SHAPE, NORTH_SHAPE, EAST_SHAPE, SOUTH_SHAPE, WEST_SHAPE;
     private static final DirectionProperty FACING;
-    private static final VoxelShape DOWN_SHAPE, NORTH_SHAPE, EAST_SHAPE, SOUTH_SHAPE, WEST_SHAPE;
 
     static {
         FACING = Properties.HOPPER_FACING;
@@ -84,7 +84,7 @@ public final class CandlestickBlock extends Block {
                 return ActionResult.PASS;
             }
             sound = SoundEvents.BLOCK_CANDLE_PLACE;
-            blockState = CandleCandlestickBlock.getCandlestickFromCandle(block);
+            blockState = CandleCandlestickBlock.getCandlestickFromCandle(block).with(CandleCandlestickBlock.FACING, state.get(FACING));
         } else if (itemStack.isOf(Items.SEA_PICKLE)) {
             sound = SoundEvents.BLOCK_SLIME_BLOCK_PLACE;
             blockState = CandlestickBlocks.SEA_PICKLE_CANDLESTICK.getDefaultState();
