@@ -1,8 +1,6 @@
 {
     "parent": "candlestick:block/template_candlestick_with_candle",
     "textures": {
-        "candle": "minecraft:block/cyan_candle_lit",
-        "candlestick": "candlestick:block/candlestick",
-        "particle": "candlestick:block/candlestick"
+        "candle": "minecraft:block/cyan_candle_lit"
     }
 }

@@ -1,7 +1,22 @@
 {
-    "variants": {
-        "": {
-            "model": "candlestick:block/candlestick"
-        }
-    }
+	"variants": {
+		"facing=down": {
+			"model": "candlestick:block/candlestick"
+		},
+		"facing=north": {
+			"model": "candlestick:block/wall_candlestick"
+		},
+		"facing=east": {
+			"model": "candlestick:block/wall_candlestick",
+			"y": 90
+		},
+		"facing=south": {
+			"model": "candlestick:block/wall_candlestick",
+			"y": 180
+		},
+		"facing=west": {
+			"model": "candlestick:block/wall_candlestick",
+			"y": 270
+		}
+	}
 }

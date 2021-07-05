@@ -1,5 +1,9 @@
 {
 	"ambientocclusion": false,
+	"textures": {
+		"candlestick": "candlestick:block/candlestick",
+        "particle": "candlestick:block/candlestick"
+	},
 	"elements": [
 		{
 			"from": [7, 0, 7],
