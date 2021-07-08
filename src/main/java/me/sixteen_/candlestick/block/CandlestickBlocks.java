@@ -1,11 +1,8 @@
 package me.sixteen_.candlestick.block;
 
-import java.util.function.ToIntFunction;
-
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.Material;
 import net.minecraft.state.property.Properties;
@@ -17,30 +14,32 @@ import net.minecraft.util.registry.Registry;
  */
 public final class CandlestickBlocks {
 
-	public static final Block//
-	CANDLESTICK, //
-			CANDLE_CANDLESTICK, //
-			WHITE_CANDLE_CANDLESTICK, //
-			ORANGE_CANDLE_CANDLESTICK, //
-			MAGENTA_CANDLE_CANDLESTICK, //
-			LIGHT_BLUE_CANDLE_CANDLESTICK, //
-			YELLOW_CANDLE_CANDLESTICK, //
-			LIME_CANDLE_CANDLESTICK, //
-			PINK_CANDLE_CANDLESTICK, //
-			GRAY_CANDLE_CANDLESTICK, //
-			LIGHT_GRAY_CANDLE_CANDLESTICK, //
-			CYAN_CANDLE_CANDLESTICK, //
-			PURPLE_CANDLE_CANDLESTICK, //
-			BLUE_CANDLE_CANDLESTICK, //
-			BROWN_CANDLE_CANDLESTICK, //
-			GREEN_CANDLE_CANDLESTICK, //
-			RED_CANDLE_CANDLESTICK, //
-			BLACK_CANDLE_CANDLESTICK, //
-			SEA_PICKLE_CANDLESTICK;
+	public static final Block
+	CANDLESTICK,
+	CANDLE_CANDLESTICK,
+	WHITE_CANDLE_CANDLESTICK,
+	ORANGE_CANDLE_CANDLESTICK,
+	MAGENTA_CANDLE_CANDLESTICK,
+	LIGHT_BLUE_CANDLE_CANDLESTICK,
+	YELLOW_CANDLE_CANDLESTICK,
+	LIME_CANDLE_CANDLESTICK,
+	PINK_CANDLE_CANDLESTICK,
+	GRAY_CANDLE_CANDLESTICK,
+	LIGHT_GRAY_CANDLE_CANDLESTICK,
+	CYAN_CANDLE_CANDLESTICK,
+	PURPLE_CANDLE_CANDLESTICK,
+	BLUE_CANDLE_CANDLESTICK,
+	BROWN_CANDLE_CANDLESTICK,
+	GREEN_CANDLE_CANDLESTICK,
+	RED_CANDLE_CANDLESTICK,
+	BLACK_CANDLE_CANDLESTICK,
+	SEA_PICKLE_CANDLESTICK;
 
 	static {
 		CANDLESTICK = register("candlestick", new CandlestickBlock(FabricBlockSettings.of(Material.METAL).strength(3.5F).nonOpaque()));
-		CANDLE_CANDLESTICK = register("candle_candlestick", new CandleCandlestickBlock(Blocks.CANDLE, AbstractBlock.Settings.copy(CANDLESTICK).luminance(createLightLevelFromLitBlockState(9))));
+		CANDLE_CANDLESTICK = register("candle_candlestick", new CandleCandlestickBlock(Blocks.CANDLE, AbstractBlock.Settings.copy(CANDLESTICK).luminance((state) -> {
+			return state.get(Properties.LIT) ? 9 : 0;
+		})));
 		WHITE_CANDLE_CANDLESTICK = register("white_candle_candlestick", new CandleCandlestickBlock(Blocks.WHITE_CANDLE, AbstractBlock.Settings.copy(CANDLE_CANDLESTICK)));
 		ORANGE_CANDLE_CANDLESTICK = register("orange_candle_candlestick", new CandleCandlestickBlock(Blocks.ORANGE_CANDLE, AbstractBlock.Settings.copy(CANDLE_CANDLESTICK)));
 		MAGENTA_CANDLE_CANDLESTICK = register("magenta_candle_candlestick", new CandleCandlestickBlock(Blocks.MAGENTA_CANDLE, AbstractBlock.Settings.copy(CANDLE_CANDLESTICK)));
@@ -58,12 +57,6 @@ public final class CandlestickBlocks {
 		RED_CANDLE_CANDLESTICK = register("red_candle_candlestick", new CandleCandlestickBlock(Blocks.RED_CANDLE, AbstractBlock.Settings.copy(CANDLE_CANDLESTICK)));
 		BLACK_CANDLE_CANDLESTICK = register("black_candle_candlestick", new CandleCandlestickBlock(Blocks.BLACK_CANDLE, AbstractBlock.Settings.copy(CANDLE_CANDLESTICK)));
 		SEA_PICKLE_CANDLESTICK = register("sea_pickle_candlestick", new SeaPickleCandlestickBlock(AbstractBlock.Settings.copy(CANDLESTICK)));
-	}
-
-	private static final ToIntFunction<BlockState> createLightLevelFromLitBlockState(final int litLevel) {
-		return (state) -> {
-			return (Boolean) state.get(Properties.LIT) ? litLevel : 0;
-		};
 	}
 
 	private static final Block register(final String id, final Block block) {

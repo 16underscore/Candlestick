@@ -38,16 +38,16 @@ import net.minecraft.world.WorldAccess;
  */
 public final class CandleCandlestickBlock extends AbstractCandleBlock {
 
-	private static final BooleanProperty LIT;
 	public static final DirectionProperty FACING;
+	private static final BooleanProperty LIT;
 	private static final VoxelShape DOWN_SHAPE, NORTH_SHAPE, EAST_SHAPE, SOUTH_SHAPE, WEST_SHAPE;
 	private static final Tag<Block> CANDLESTICKS;
 	private static final Map<Block, CandleCandlestickBlock> CANDLES_TO_CANDLESTICK;
 	private static final Iterable<Vec3d> DOWN_PARTICLE_OFFSETS, NORTH_PARTICLE_OFFSETS, EAST_PARTICLE_OFFSETS, SOUTH_PARTICLE_OFFSETS, WEST_PARTICLE_OFFSETS;
 
 	static {
-		LIT = AbstractCandleBlock.LIT;
 		FACING = Properties.HOPPER_FACING;
+		LIT = AbstractCandleBlock.LIT;
 		DOWN_SHAPE = VoxelShapes.union(CandlestickBlock.DOWN_SHAPE, Block.createCuboidShape(7.0D, 4.0D, 7.0D, 9.0D, 10.0D, 9.0D));
 		NORTH_SHAPE = VoxelShapes.union(CandlestickBlock.NORTH_SHAPE, Block.createCuboidShape(7.0D, 6.0D, 1.0D, 9.0D, 12.0D, 3.0D));
 		EAST_SHAPE = VoxelShapes.union(CandlestickBlock.EAST_SHAPE, Block.createCuboidShape(13.0D, 6.0D, 7.0D, 15.0D, 12.0D, 9.0D));
@@ -64,7 +64,7 @@ public final class CandleCandlestickBlock extends AbstractCandleBlock {
 
 	protected CandleCandlestickBlock(final Block candle, final Settings settings) {
 		super(settings);
-		setDefaultState((BlockState) ((BlockState) stateManager.getDefaultState()).with(LIT, false));
+		setDefaultState((BlockState) ((BlockState) stateManager.getDefaultState()).with(LIT, false).with(FACING, Direction.DOWN));
 		CANDLES_TO_CANDLESTICK.put(candle, this);
 	}
 
@@ -125,18 +125,18 @@ public final class CandleCandlestickBlock extends AbstractCandleBlock {
 	@Override
 	protected final Iterable<Vec3d> getParticleOffsets(final BlockState state) {
 		switch ((Direction) state.get(FACING)) {
-			case DOWN:
-			default:
-				return DOWN_PARTICLE_OFFSETS;
-			case NORTH:
-				return NORTH_PARTICLE_OFFSETS;
-			case SOUTH:
-				return SOUTH_PARTICLE_OFFSETS;
-			case WEST:
-				return WEST_PARTICLE_OFFSETS;
-			case EAST:
-				return EAST_PARTICLE_OFFSETS;
-			}
+		case DOWN:
+		default:
+			return DOWN_PARTICLE_OFFSETS;
+		case NORTH:
+			return NORTH_PARTICLE_OFFSETS;
+		case SOUTH:
+			return SOUTH_PARTICLE_OFFSETS;
+		case WEST:
+			return WEST_PARTICLE_OFFSETS;
+		case EAST:
+			return EAST_PARTICLE_OFFSETS;
+		}
 	}
 
 	@Override
