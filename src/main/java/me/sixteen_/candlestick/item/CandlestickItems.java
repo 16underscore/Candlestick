@@ -12,13 +12,13 @@ import net.minecraft.util.registry.Registry;
  */
 public final class CandlestickItems {
 
-    public static final BlockItem CANDLESTICK;
+	public static final BlockItem CANDLESTICK;
 
-    static {
-        CANDLESTICK = register("candlestick", new BlockItem(CandlestickBlocks.CANDLESTICK, new FabricItemSettings().group(ItemGroup.DECORATIONS)));
-    }
+	static {
+		CANDLESTICK = register("candlestick", new BlockItem(CandlestickBlocks.CANDLESTICK, new FabricItemSettings().group(ItemGroup.DECORATIONS)));
+	}
 
-    private static final BlockItem register(final String id, final BlockItem block) {
-        return (BlockItem) Registry.register(Registry.ITEM, new Identifier("candlestick", id), block);
-    }
+	private static final BlockItem register(final String id, final BlockItem block) {
+		return (BlockItem) Registry.register(Registry.ITEM, new Identifier("candlestick", id), block);
+	}
 }

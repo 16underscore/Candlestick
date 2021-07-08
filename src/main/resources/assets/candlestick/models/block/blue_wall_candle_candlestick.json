@@ -1,6 +1,6 @@
 {
-    "parent": "candlestick:block/template_wall_candlestick_with_candle",
-    "textures": {
-        "candle": "minecraft:block/blue_candle"
-    }
+	"parent": "candlestick:block/template_wall_candlestick_with_candle",
+	"textures": {
+		"candle": "minecraft:block/blue_candle"
+	}
 }

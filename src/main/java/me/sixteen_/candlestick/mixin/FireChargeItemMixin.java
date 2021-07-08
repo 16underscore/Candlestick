@@ -21,16 +21,16 @@ import net.minecraft.world.event.GameEvent;
 @Mixin(FireChargeItem.class)
 public abstract class FireChargeItemMixin {
 
-    @Inject(method = "useOnBlock", at = @At("HEAD"), cancellable = true)
-    public final void useOnBlock(ItemUsageContext context, final CallbackInfoReturnable<ActionResult> info) {
-        final World world = context.getWorld();
-        final BlockPos blockPos = context.getBlockPos();
-        final BlockState blockState = world.getBlockState(blockPos);
-        if (CandleCandlestickBlock.canBeLit(blockState)) {
-            world.setBlockState(blockPos, (BlockState) blockState.with(Properties.LIT, true));
-            world.emitGameEvent(context.getPlayer(), GameEvent.BLOCK_PLACE, blockPos);
-            context.getStack().decrement(1);
-            info.setReturnValue(ActionResult.success(world.isClient));
-        }
-    }
+	@Inject(method = "useOnBlock", at = @At("HEAD"), cancellable = true)
+	public final void useOnBlock(ItemUsageContext context, final CallbackInfoReturnable<ActionResult> info) {
+		final World world = context.getWorld();
+		final BlockPos blockPos = context.getBlockPos();
+		final BlockState blockState = world.getBlockState(blockPos);
+		if (CandleCandlestickBlock.canBeLit(blockState)) {
+			world.setBlockState(blockPos, (BlockState) blockState.with(Properties.LIT, true));
+			world.emitGameEvent(context.getPlayer(), GameEvent.BLOCK_PLACE, blockPos);
+			context.getStack().decrement(1);
+			info.setReturnValue(ActionResult.success(world.isClient));
+		}
+	}
 }

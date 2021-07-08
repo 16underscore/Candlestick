@@ -1,37 +1,37 @@
 {
-    "parent": "minecraft:adventure/root",
-    "display": {
-        "icon": {
-            "item": "minecraft:sea_pickle"
-        },
-        "title": {
-            "translate": "advancements.adventure.not_a_candle.title"
-        },
-        "description": {
-            "translate": "advancements.adventure.not_a_candle.description"
-        },
-        "frame": "task",
-        "show_toast": true,
-        "announce_to_chat": true,
-        "hidden": false
-    },
-    "criteria": {
-        "requirement": {
-            "trigger": "minecraft:item_used_on_block",
-            "conditions": {
-                "item": {
-                    "items": [
-                        "minecraft:sea_pickle"
-                    ]
-                },
-                "location": {
-                    "block": {
-                        "blocks": [
-                            "candlestick:candlestick"
-                        ]
-                    }
-                }
-            }
-        }
-    }
+	"parent": "minecraft:adventure/root",
+	"display": {
+		"icon": {
+			"item": "minecraft:sea_pickle"
+		},
+		"title": {
+			"translate": "advancements.adventure.not_a_candle.title"
+		},
+		"description": {
+			"translate": "advancements.adventure.not_a_candle.description"
+		},
+		"frame": "task",
+		"show_toast": true,
+		"announce_to_chat": true,
+		"hidden": false
+	},
+	"criteria": {
+		"requirement": {
+			"trigger": "minecraft:item_used_on_block",
+			"conditions": {
+				"item": {
+					"items": [
+						"minecraft:sea_pickle"
+					]
+				},
+				"location": {
+					"block": {
+						"blocks": [
+							"candlestick:candlestick"
+						]
+					}
+				}
+			}
+		}
+	}
 }

@@ -1,7 +1,7 @@
 {
-    "variants": {
-        "": {
-            "model": "candlestick:block/sea_pickle_candlestick"
-        }
-    }
+	"variants": {
+		"": {
+			"model": "candlestick:block/sea_pickle_candlestick"
+		}
+	}
 }
