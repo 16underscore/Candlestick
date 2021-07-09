@@ -1,86 +1,30 @@
 {
 	"ambientocclusion": false,
 	"textures": {
+		"particle": "candlestick:block/candlestick",
 		"candlestick": "candlestick:block/candlestick",
-		"sea_pickle": "minecraft:block/sea_pickle",
-		"particle": "candlestick:block/candlestick"
+		"sea_pickle": "block/sea_pickle"
 	},
 	"elements": [
 		{
 			"from": [7, 0, 7],
 			"to": [9, 3, 9],
-			"rotation": {"angle": 0, "axis": "y", "origin": [8, 3, 8]},
 			"faces": {
 				"north": {"uv": [0, 0, 16, 16], "texture": "#candlestick"},
 				"east": {"uv": [0, 0, 16, 16], "texture": "#candlestick"},
 				"south": {"uv": [0, 0, 16, 16], "texture": "#candlestick"},
 				"west": {"uv": [0, 0, 16, 16], "texture": "#candlestick"},
-				"up": {"uv": [0, 0, 16, 16], "texture": "#candlestick"},
 				"down": {"uv": [0, 0, 16, 16], "texture": "#candlestick"}
 			}
 		},
 		{
 			"from": [6, 3, 6],
-			"to": [10, 4, 10],
-			"rotation": {"angle": 0, "axis": "y", "origin": [8, 3, 8]},
-			"faces": {
-				"north": {"uv": [0, 0, 16, 16], "texture": "#candlestick"},
-				"east": {"uv": [0, 0, 16, 16], "texture": "#candlestick"},
-				"south": {"uv": [0, 0, 16, 16], "texture": "#candlestick"},
-				"west": {"uv": [0, 0, 16, 16], "texture": "#candlestick"},
-				"up": {"uv": [0, 0, 16, 16], "texture": "#candlestick"},
-				"down": {"uv": [0, 0, 16, 16], "texture": "#candlestick"}
-			}
-		},
-		{
-			"from": [6, 4, 9],
-			"to": [9, 5, 10],
-			"rotation": {"angle": 0, "axis": "y", "origin": [8, 3, 8]},
-			"faces": {
-				"north": {"uv": [0, 0, 16, 16], "texture": "#candlestick"},
-				"east": {"uv": [0, 0, 16, 16], "texture": "#candlestick"},
-				"south": {"uv": [0, 0, 16, 16], "texture": "#candlestick"},
-				"west": {"uv": [0, 0, 16, 16], "texture": "#candlestick"},
-				"up": {"uv": [0, 0, 16, 16], "texture": "#candlestick"},
-				"down": {"uv": [0, 0, 16, 16], "texture": "#candlestick"}
-			}
-		},
-		{
-			"from": [7, 4, 6],
-			"to": [10, 5, 7],
-			"rotation": {"angle": 0, "axis": "y", "origin": [8, 3, 8]},
-			"faces": {
-				"north": {"uv": [0, 0, 16, 16], "texture": "#candlestick"},
-				"east": {"uv": [0, 0, 16, 16], "texture": "#candlestick"},
-				"south": {"uv": [0, 0, 16, 16], "texture": "#candlestick"},
-				"west": {"uv": [0, 0, 16, 16], "texture": "#candlestick"},
-				"up": {"uv": [0, 0, 16, 16], "texture": "#candlestick"},
-				"down": {"uv": [0, 0, 16, 16], "texture": "#candlestick"}
-			}
-		},
-		{
-			"from": [9, 4, 7],
 			"to": [10, 5, 10],
-			"rotation": {"angle": 0, "axis": "y", "origin": [8, 3, 8]},
 			"faces": {
 				"north": {"uv": [0, 0, 16, 16], "texture": "#candlestick"},
 				"east": {"uv": [0, 0, 16, 16], "texture": "#candlestick"},
 				"south": {"uv": [0, 0, 16, 16], "texture": "#candlestick"},
 				"west": {"uv": [0, 0, 16, 16], "texture": "#candlestick"},
-				"up": {"uv": [0, 0, 16, 16], "texture": "#candlestick"},
-				"down": {"uv": [0, 0, 16, 16], "texture": "#candlestick"}
-			}
-		},
-		{
-			"from": [6, 4, 6],
-			"to": [7, 5, 9],
-			"rotation": {"angle": 0, "axis": "y", "origin": [8, 3, 8]},
-			"faces": {
-				"north": {"uv": [0, 0, 16, 16], "texture": "#candlestick"},
-				"east": {"uv": [0, 0, 16, 16], "texture": "#candlestick"},
-				"south": {"uv": [0, 0, 16, 16], "texture": "#candlestick"},
-				"west": {"uv": [0, 0, 16, 16], "texture": "#candlestick"},
-				"up": {"uv": [0, 0, 16, 16], "texture": "#candlestick"},
 				"down": {"uv": [0, 0, 16, 16], "texture": "#candlestick"}
 			}
 		},
@@ -88,7 +32,6 @@
 			"from": [8, 10.2, 7.5],
 			"to": [8, 13.7, 8.5],
 			"shade": false,
-			"rotation": {"angle": 45, "axis": "y", "origin": [8, 13, 8], "rescale": true},
 			"faces": {
 				"east": {"uv": [15, 0, 13, 5], "texture": "#sea_pickle"},
 				"west": {"uv": [13, 0, 15, 5], "texture": "#sea_pickle"}
@@ -98,7 +41,6 @@
 			"from": [7.5, 10.2, 8],
 			"to": [8.5, 13.7, 8],
 			"shade": false,
-			"rotation": {"angle": 45, "axis": "y", "origin": [8, 13, 8], "rescale": true},
 			"faces": {
 				"north": {"uv": [1, 0, 3, 5], "texture": "#sea_pickle"},
 				"south": {"uv": [3, 0, 1, 5], "texture": "#sea_pickle"}
@@ -107,7 +49,6 @@
 		{
 			"from": [6, 10.95, 6],
 			"to": [10, 10.95, 10],
-			"rotation": {"angle": 0, "axis": "y", "origin": [0, 5, 0]},
 			"faces": {
 				"up": {"uv": [8, 1, 12, 5], "texture": "#sea_pickle"}
 			}
@@ -115,14 +56,12 @@
 		{
 			"from": [6, 5, 6],
 			"to": [10, 11, 10],
-			"rotation": {"angle": 0, "axis": "y", "origin": [0, 5, 0]},
 			"faces": {
 				"north": {"uv": [4, 5, 8, 11], "texture": "#sea_pickle"},
 				"east": {"uv": [12, 5, 16, 11], "texture": "#sea_pickle"},
 				"south": {"uv": [0, 5, 4, 11], "texture": "#sea_pickle"},
 				"west": {"uv": [8, 5, 12, 11], "texture": "#sea_pickle"},
-				"up": {"uv": [4, 1, 8, 5], "texture": "#sea_pickle"},
-				"down": {"uv": [8, 1, 12, 5], "texture": "#sea_pickle", "cullface": "down"}
+				"up": {"uv": [4, 1, 8, 5], "texture": "#sea_pickle"}
 			}
 		}
 	]

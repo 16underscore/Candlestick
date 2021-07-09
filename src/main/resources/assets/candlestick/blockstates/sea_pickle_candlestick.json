@@ -1,7 +1,22 @@
 {
 	"variants": {
-		"": {
+		"facing=down": {
 			"model": "candlestick:block/sea_pickle_candlestick"
+		},
+		"facing=north": {
+			"model": "candlestick:block/wall_sea_pickle_candlestick"
+		},
+		"facing=east": {
+			"model": "candlestick:block/wall_sea_pickle_candlestick",
+			"y": 90
+		},
+		"facing=south": {
+			"model": "candlestick:block/wall_sea_pickle_candlestick",
+			"y": 180
+		},
+		"facing=west": {
+			"model": "candlestick:block/wall_sea_pickle_candlestick",
+			"y": 270
 		}
 	}
 }

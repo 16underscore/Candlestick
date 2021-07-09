@@ -13,9 +13,6 @@ import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.stat.Stats;
-import net.minecraft.state.StateManager.Builder;
-import net.minecraft.state.property.DirectionProperty;
-import net.minecraft.state.property.Properties;
 import net.minecraft.tag.ItemTags;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
@@ -30,13 +27,11 @@ import net.minecraft.world.event.GameEvent;
 /**
  * @author 16_
  */
-public final class CandlestickBlock extends Block {
+public final class CandlestickBlock extends AbstractCandlestickBlock {
 
 	public static final VoxelShape DOWN_SHAPE, NORTH_SHAPE, EAST_SHAPE, SOUTH_SHAPE, WEST_SHAPE;
-	private static final DirectionProperty FACING;
 
 	static {
-		FACING = Properties.HOPPER_FACING;
 		DOWN_SHAPE = Block.createCuboidShape(6.0D, 0.0D, 6.0D, 10.0D, 5.0D, 10.0D);
 		EAST_SHAPE = Block.createCuboidShape(12.0D, 2.0D, 6.0D, 16.0D, 7.0D, 10.0D);
 		NORTH_SHAPE = Block.createCuboidShape(6.0D, 2.0D, 0.0D, 10.0D, 7.0D, 4.0D);
@@ -46,23 +41,22 @@ public final class CandlestickBlock extends Block {
 
 	protected CandlestickBlock(final Settings settings) {
 		super(settings);
-		setDefaultState((BlockState) ((BlockState) stateManager.getDefaultState()).with(FACING, Direction.DOWN));
 	}
 
 	@Override
 	public final VoxelShape getOutlineShape(final BlockState state, final BlockView world, final BlockPos pos, final ShapeContext context) {
 		switch ((Direction) state.get(FACING)) {
-		case DOWN:
-		default:
-			return DOWN_SHAPE;
-		case NORTH:
-			return NORTH_SHAPE;
-		case SOUTH:
-			return SOUTH_SHAPE;
-		case WEST:
-			return WEST_SHAPE;
-		case EAST:
-			return EAST_SHAPE;
+			case DOWN:
+			default:
+				return DOWN_SHAPE;
+			case NORTH:
+				return NORTH_SHAPE;
+			case SOUTH:
+				return SOUTH_SHAPE;
+			case WEST:
+				return WEST_SHAPE;
+			case EAST:
+				return EAST_SHAPE;
 		}
 	}
 
@@ -84,10 +78,10 @@ public final class CandlestickBlock extends Block {
 				return ActionResult.PASS;
 			}
 			sound = SoundEvents.BLOCK_CANDLE_PLACE;
-			blockState = CandleCandlestickBlock.getCandlestickFromCandle(block).with(CandleCandlestickBlock.FACING, state.get(FACING));
+			blockState = CandleCandlestickBlock.getCandlestickFromCandle(block).with(CandleCandlestickBlock.FACING, state.get(FACING));;
 		} else if (itemStack.isOf(Items.SEA_PICKLE)) {
 			sound = SoundEvents.BLOCK_SLIME_BLOCK_PLACE;
-			blockState = CandlestickBlocks.SEA_PICKLE_CANDLESTICK.getDefaultState();
+			blockState = CandlestickBlocks.SEA_PICKLE_CANDLESTICK.getDefaultState().with(SeaPickleCandlestickBlock.FACING, state.get(FACING));
 		} else {
 			return ActionResult.PASS;
 		}
@@ -99,10 +93,5 @@ public final class CandlestickBlock extends Block {
 		world.emitGameEvent(player, GameEvent.BLOCK_CHANGE, pos);
 		player.incrementStat(Stats.USED.getOrCreateStat(item));
 		return ActionResult.SUCCESS;
-	}
-
-	@Override
-	protected final void appendProperties(final Builder<Block, BlockState> builder) {
-		builder.add(FACING);
 	}
 }
