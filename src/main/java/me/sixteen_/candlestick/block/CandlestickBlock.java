@@ -13,6 +13,7 @@ import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.stat.Stats;
+import net.minecraft.state.property.Properties;
 import net.minecraft.tag.ItemTags;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
@@ -78,17 +79,17 @@ public final class CandlestickBlock extends AbstractCandlestickBlock {
 				return ActionResult.PASS;
 			}
 			sound = SoundEvents.BLOCK_CANDLE_PLACE;
-			blockState = CandleCandlestickBlock.getCandlestickFromCandle(block).with(CandleCandlestickBlock.FACING, state.get(FACING));
+			blockState = CandleCandlestickBlock.getCandlestickFromCandle(block);
 		} else if (itemStack.isOf(Items.SEA_PICKLE)) {
 			sound = SoundEvents.BLOCK_SLIME_BLOCK_PLACE;
-			blockState = CandlestickBlocks.SEA_PICKLE_CANDLESTICK.getDefaultState().with(SeaPickleCandlestickBlock.FACING, state.get(FACING));
+			blockState = CandlestickBlocks.SEA_PICKLE_CANDLESTICK.getDefaultState();
 		} else {
 			return ActionResult.PASS;
 		}
 		if (!player.isCreative()) {
 			itemStack.decrement(1);
 		}
-		world.setBlockState(pos, blockState);
+		world.setBlockState(pos, blockState.with(Properties.HOPPER_FACING, state.get(FACING)));
 		world.playSound(null, pos, sound, SoundCategory.BLOCKS, 1.0F, 1.0F);
 		world.emitGameEvent(player, GameEvent.BLOCK_CHANGE, pos);
 		player.incrementStat(Stats.USED.getOrCreateStat(item));
