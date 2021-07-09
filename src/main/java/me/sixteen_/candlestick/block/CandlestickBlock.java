@@ -45,7 +45,7 @@ public final class CandlestickBlock extends AbstractCandlestickBlock {
 
 	@Override
 	public final VoxelShape getOutlineShape(final BlockState state, final BlockView world, final BlockPos pos, final ShapeContext context) {
-		switch ((Direction) state.get(FACING)) {
+		switch (state.get(FACING)) {
 			case DOWN:
 			default:
 				return DOWN_SHAPE;
@@ -63,7 +63,7 @@ public final class CandlestickBlock extends AbstractCandlestickBlock {
 	@Override
 	public final BlockState getPlacementState(final ItemPlacementContext ctx) {
 		final Direction direction = ctx.getSide().getOpposite();
-		return (BlockState) ((BlockState) this.getDefaultState().with(FACING, direction.getAxis() == Direction.Axis.Y ? Direction.DOWN : direction));
+		return this.getDefaultState().with(FACING, direction.getAxis() == Direction.Axis.Y ? Direction.DOWN : direction);
 	}
 
 	@Override
@@ -78,7 +78,7 @@ public final class CandlestickBlock extends AbstractCandlestickBlock {
 				return ActionResult.PASS;
 			}
 			sound = SoundEvents.BLOCK_CANDLE_PLACE;
-			blockState = CandleCandlestickBlock.getCandlestickFromCandle(block).with(CandleCandlestickBlock.FACING, state.get(FACING));;
+			blockState = CandleCandlestickBlock.getCandlestickFromCandle(block).with(CandleCandlestickBlock.FACING, state.get(FACING));
 		} else if (itemStack.isOf(Items.SEA_PICKLE)) {
 			sound = SoundEvents.BLOCK_SLIME_BLOCK_PLACE;
 			blockState = CandlestickBlocks.SEA_PICKLE_CANDLESTICK.getDefaultState().with(SeaPickleCandlestickBlock.FACING, state.get(FACING));
@@ -89,7 +89,7 @@ public final class CandlestickBlock extends AbstractCandlestickBlock {
 			itemStack.decrement(1);
 		}
 		world.setBlockState(pos, blockState);
-		world.playSound((PlayerEntity) null, pos, sound, SoundCategory.BLOCKS, 1.0F, 1.0F);
+		world.playSound(null, pos, sound, SoundCategory.BLOCKS, 1.0F, 1.0F);
 		world.emitGameEvent(player, GameEvent.BLOCK_CHANGE, pos);
 		player.incrementStat(Stats.USED.getOrCreateStat(item));
 		return ActionResult.SUCCESS;

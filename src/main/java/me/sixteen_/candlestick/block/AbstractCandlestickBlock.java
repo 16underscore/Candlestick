@@ -21,7 +21,7 @@ public abstract class AbstractCandlestickBlock extends Block {
 
 	protected AbstractCandlestickBlock(final Settings settings) {
 		super(settings);
-		setDefaultState((BlockState) ((BlockState) stateManager.getDefaultState()).with(FACING, Direction.DOWN));
+		setDefaultState(stateManager.getDefaultState().with(FACING, Direction.DOWN));
 	}
 
 	@Override

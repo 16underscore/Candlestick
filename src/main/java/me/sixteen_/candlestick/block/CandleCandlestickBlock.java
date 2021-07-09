@@ -64,34 +64,34 @@ public final class CandleCandlestickBlock extends AbstractCandleBlock {
 
 	protected CandleCandlestickBlock(final Block candle, final Settings settings) {
 		super(settings);
-		setDefaultState((BlockState) ((BlockState) stateManager.getDefaultState()).with(LIT, false).with(FACING, Direction.DOWN));
+		setDefaultState(stateManager.getDefaultState().with(LIT, false).with(FACING, Direction.DOWN));
 		CANDLES_TO_CANDLESTICK.put(candle, this);
 	}
 
 	public static final BlockState getCandlestickFromCandle(final Block candle) {
-		return ((CandleCandlestickBlock) CANDLES_TO_CANDLESTICK.get(candle)).getDefaultState();
+		return CANDLES_TO_CANDLESTICK.get(candle).getDefaultState();
 	}
 
 	public static final boolean canBeLit(final BlockState state) {
 		return state.isIn(CANDLESTICKS, (statex) -> {
-			return statex.contains(LIT) && !(Boolean) state.get(LIT);
+			return statex.contains(LIT) && !state.get(LIT);
 		});
 	}
 
 	@Override
 	public final VoxelShape getOutlineShape(final BlockState state, final BlockView world, final BlockPos pos, final ShapeContext context) {
-		switch ((Direction) state.get(FACING)) {
-		case DOWN:
-		default:
-			return DOWN_SHAPE;
-		case NORTH:
-			return NORTH_SHAPE;
-		case SOUTH:
-			return SOUTH_SHAPE;
-		case WEST:
-			return WEST_SHAPE;
-		case EAST:
-			return EAST_SHAPE;
+		switch (state.get(FACING)) {
+			case DOWN:
+			default:
+				return DOWN_SHAPE;
+			case NORTH:
+				return NORTH_SHAPE;
+			case SOUTH:
+				return SOUTH_SHAPE;
+			case WEST:
+				return WEST_SHAPE;
+			case EAST:
+				return EAST_SHAPE;
 		}
 	}
 
@@ -109,7 +109,7 @@ public final class CandleCandlestickBlock extends AbstractCandleBlock {
 	public final ActionResult onUse(final BlockState state, final World world, final BlockPos pos, final PlayerEntity player, final Hand hand, final BlockHitResult hit) {
 		final ItemStack itemStack = player.getStackInHand(hand);
 		if (!(itemStack.isOf(Items.FLINT_AND_STEEL) || itemStack.isOf(Items.FIRE_CHARGE))) {
-			if (player.getStackInHand(hand).isEmpty() && (Boolean) state.get(LIT)) {
+			if (player.getStackInHand(hand).isEmpty() && state.get(LIT)) {
 				extinguish(player, state, world, pos);
 				return ActionResult.success(world.isClient);
 			}
@@ -124,18 +124,18 @@ public final class CandleCandlestickBlock extends AbstractCandleBlock {
 
 	@Override
 	protected final Iterable<Vec3d> getParticleOffsets(final BlockState state) {
-		switch ((Direction) state.get(FACING)) {
-		case DOWN:
-		default:
-			return DOWN_PARTICLE_OFFSETS;
-		case NORTH:
-			return NORTH_PARTICLE_OFFSETS;
-		case SOUTH:
-			return SOUTH_PARTICLE_OFFSETS;
-		case WEST:
-			return WEST_PARTICLE_OFFSETS;
-		case EAST:
-			return EAST_PARTICLE_OFFSETS;
+		switch (state.get(FACING)) {
+			case DOWN:
+			default:
+				return DOWN_PARTICLE_OFFSETS;
+			case NORTH:
+				return NORTH_PARTICLE_OFFSETS;
+			case SOUTH:
+				return SOUTH_PARTICLE_OFFSETS;
+			case WEST:
+				return WEST_PARTICLE_OFFSETS;
+			case EAST:
+				return EAST_PARTICLE_OFFSETS;
 		}
 	}
 

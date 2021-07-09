@@ -60,6 +60,6 @@ public final class CandlestickBlocks {
 	}
 
 	private static final Block register(final String id, final Block block) {
-		return (Block) Registry.register(Registry.BLOCK, new Identifier("candlestick", id), block);
+		return Registry.register(Registry.BLOCK, new Identifier("candlestick", id), block);
 	}
 }

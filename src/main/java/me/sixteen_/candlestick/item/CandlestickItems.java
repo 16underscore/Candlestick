@@ -19,6 +19,6 @@ public final class CandlestickItems {
 	}
 
 	private static final BlockItem register(final String id, final BlockItem block) {
-		return (BlockItem) Registry.register(Registry.ITEM, new Identifier("candlestick", id), block);
+		return Registry.register(Registry.ITEM, new Identifier("candlestick", id), block);
 	}
 }

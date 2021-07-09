@@ -4,7 +4,6 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 
@@ -29,7 +28,7 @@ public final class SeaPickleCandlestickBlock extends AbstractCandlestickBlock {
 
 	@Override
 	public final VoxelShape getOutlineShape(final BlockState state, final BlockView world, final BlockPos pos, final ShapeContext context) {
-		switch ((Direction) state.get(FACING)) {
+		switch (state.get(FACING)) {
 			case DOWN:
 			default:
 				return DOWN_SHAPE;

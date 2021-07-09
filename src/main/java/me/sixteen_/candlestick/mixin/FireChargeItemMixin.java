@@ -27,7 +27,7 @@ public abstract class FireChargeItemMixin {
 		final BlockPos blockPos = context.getBlockPos();
 		final BlockState blockState = world.getBlockState(blockPos);
 		if (CandleCandlestickBlock.canBeLit(blockState)) {
-			world.setBlockState(blockPos, (BlockState) blockState.with(Properties.LIT, true));
+			world.setBlockState(blockPos, blockState.with(Properties.LIT, true));
 			world.emitGameEvent(context.getPlayer(), GameEvent.BLOCK_PLACE, blockPos);
 			context.getStack().decrement(1);
 			info.setReturnValue(ActionResult.success(world.isClient));
