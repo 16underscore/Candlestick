@@ -19,23 +19,23 @@ public abstract class AbstractCandlestickBlock extends Block {
 		FACING = Properties.HOPPER_FACING;
 	}
 
-	protected AbstractCandlestickBlock(final Settings settings) {
+	protected AbstractCandlestickBlock(Settings settings) {
 		super(settings);
 		setDefaultState(stateManager.getDefaultState().with(FACING, Direction.DOWN));
 	}
 
 	@Override
-	public final boolean canPathfindThrough(final BlockState state, final BlockView world, final BlockPos pos, final NavigationType type) {
+	public boolean canPathfindThrough(BlockState state, BlockView world, BlockPos pos, NavigationType type) {
 		return false;
 	}
 
 	@Override
-	public final ItemStack getPickStack(final BlockView world, final BlockPos pos, final BlockState state) {
+	public ItemStack getPickStack(BlockView world, BlockPos pos, BlockState state) {
 		return new ItemStack(CandlestickBlocks.CANDLESTICK);
 	}
 
 	@Override
-	protected final void appendProperties(final Builder<Block, BlockState> builder) {
+	protected void appendProperties(Builder<Block, BlockState> builder) {
 		builder.add(FACING);
 	}
 }

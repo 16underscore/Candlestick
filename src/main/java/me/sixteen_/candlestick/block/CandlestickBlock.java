@@ -28,7 +28,7 @@ import net.minecraft.world.event.GameEvent;
 /**
  * @author 16_
  */
-public final class CandlestickBlock extends AbstractCandlestickBlock {
+public class CandlestickBlock extends AbstractCandlestickBlock {
 
 	public static final VoxelShape DOWN_SHAPE, NORTH_SHAPE, EAST_SHAPE, SOUTH_SHAPE, WEST_SHAPE;
 
@@ -40,12 +40,12 @@ public final class CandlestickBlock extends AbstractCandlestickBlock {
 		WEST_SHAPE = Block.createCuboidShape(0.0D, 2.0D, 6.0D, 4.0D, 7.0D, 10.0D);
 	}
 
-	protected CandlestickBlock(final Settings settings) {
+	protected CandlestickBlock(Settings settings) {
 		super(settings);
 	}
 
 	@Override
-	public final VoxelShape getOutlineShape(final BlockState state, final BlockView world, final BlockPos pos, final ShapeContext context) {
+	public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
 		switch (state.get(FACING)) {
 			case DOWN:
 			default:
@@ -62,19 +62,19 @@ public final class CandlestickBlock extends AbstractCandlestickBlock {
 	}
 
 	@Override
-	public final BlockState getPlacementState(final ItemPlacementContext ctx) {
-		final Direction direction = ctx.getSide().getOpposite();
+	public BlockState getPlacementState(ItemPlacementContext ctx) {
+		Direction direction = ctx.getSide().getOpposite();
 		return this.getDefaultState().with(FACING, direction.getAxis() == Direction.Axis.Y ? Direction.DOWN : direction);
 	}
 
 	@Override
-	public final ActionResult onUse(final BlockState state, final World world, final BlockPos pos, final PlayerEntity player, final Hand hand, final BlockHitResult hit) {
-		final ItemStack itemStack = player.getStackInHand(hand);
-		final Item item = itemStack.getItem();
+	public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
+		ItemStack itemStack = player.getStackInHand(hand);
+		Item item = itemStack.getItem();
 		SoundEvent sound;
 		BlockState blockState;
 		if (itemStack.isIn(ItemTags.CANDLES)) {
-			final Block block = Block.getBlockFromItem(item);
+			Block block = Block.getBlockFromItem(item);
 			if (!(block instanceof CandleBlock)) {
 				return ActionResult.PASS;
 			}

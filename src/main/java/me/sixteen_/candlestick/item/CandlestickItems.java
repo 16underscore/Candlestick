@@ -10,7 +10,7 @@ import net.minecraft.util.registry.Registry;
 /**
  * @author 16_
  */
-public final class CandlestickItems {
+public class CandlestickItems {
 
 	public static final BlockItem CANDLESTICK;
 
@@ -18,7 +18,7 @@ public final class CandlestickItems {
 		CANDLESTICK = register("candlestick", new BlockItem(CandlestickBlocks.CANDLESTICK, new FabricItemSettings().group(ItemGroup.DECORATIONS)));
 	}
 
-	private static final BlockItem register(final String id, final BlockItem block) {
+	private static BlockItem register(String id, BlockItem block) {
 		return Registry.register(Registry.ITEM, new Identifier("candlestick", id), block);
 	}
 }

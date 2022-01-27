@@ -7,10 +7,10 @@ import net.fabricmc.api.ModInitializer;
 /**
  * @author 16_
  */
-public final class Candlestick implements ModInitializer {
+public class Candlestick implements ModInitializer {
 
 	@Override
-	public final void onInitialize() {
+	public void onInitialize() {
 		new CandlestickBlocks();
 		new CandlestickItems();
 	}

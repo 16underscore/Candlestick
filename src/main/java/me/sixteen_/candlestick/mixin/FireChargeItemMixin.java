@@ -26,10 +26,10 @@ import net.minecraft.world.event.GameEvent;
 public abstract class FireChargeItemMixin {
 
 	@Inject(method = "useOnBlock", at = @At("HEAD"), cancellable = true)
-	public final void useOnBlock(ItemUsageContext context, final CallbackInfoReturnable<ActionResult> info) {
-		final World world = context.getWorld();
-		final BlockPos blockPos = context.getBlockPos();
-		final BlockState blockState = world.getBlockState(blockPos);
+	public void useOnBlock(ItemUsageContext context, CallbackInfoReturnable<ActionResult> info) {
+		World world = context.getWorld();
+		BlockPos blockPos = context.getBlockPos();
+		BlockState blockState = world.getBlockState(blockPos);
 		if (CandleCandlestickBlock.canBeLit(blockState)) {
 			playUseSound(world, blockPos);
 			world.setBlockState(blockPos, blockState.with(Properties.LIT, true));
@@ -39,8 +39,8 @@ public abstract class FireChargeItemMixin {
 		}
 	}
 
-	private final void playUseSound(final World world, final BlockPos pos) {
-		final Random random = world.getRandom();
+	private void playUseSound(World world, BlockPos pos) {
+		Random random = world.getRandom();
 		world.playSound(null, pos, SoundEvents.ITEM_FIRECHARGE_USE, SoundCategory.BLOCKS, 1.0F, (random.nextFloat() - random.nextFloat()) * 0.2F + 1.0F);
 	}
 }

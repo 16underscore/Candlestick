@@ -26,11 +26,11 @@ import net.minecraft.world.event.GameEvent;
 public abstract class FlintAndSteelItemMixin {
 
 	@Inject(method = "useOnBlock", at = @At("HEAD"), cancellable = true)
-	public final void useOnBlock(ItemUsageContext context, final CallbackInfoReturnable<ActionResult> info) {
-		final PlayerEntity playerEntity = context.getPlayer();
-		final World world = context.getWorld();
-		final BlockPos blockPos = context.getBlockPos();
-		final BlockState blockState = world.getBlockState(blockPos);
+	public void useOnBlock(ItemUsageContext context, CallbackInfoReturnable<ActionResult> info) {
+		PlayerEntity playerEntity = context.getPlayer();
+		World world = context.getWorld();
+		BlockPos blockPos = context.getBlockPos();
+		BlockState blockState = world.getBlockState(blockPos);
 		if (CandleCandlestickBlock.canBeLit(blockState)) {
 			world.playSound(playerEntity, blockPos, SoundEvents.ITEM_FLINTANDSTEEL_USE, SoundCategory.BLOCKS, 1.0F, world.getRandom().nextFloat() * 0.4F + 0.8F);
 			world.setBlockState(blockPos, blockState.with(Properties.LIT, true), Block.NOTIFY_ALL | Block.REDRAW_ON_MAIN_THREAD);
