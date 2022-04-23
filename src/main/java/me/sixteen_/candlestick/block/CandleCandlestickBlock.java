@@ -5,7 +5,6 @@ import java.util.Map;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Maps;
 
-import net.fabricmc.fabric.api.tag.TagFactory;
 import net.minecraft.block.AbstractCandleBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -18,7 +17,7 @@ import net.minecraft.state.StateManager.Builder;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.state.property.Properties;
-import net.minecraft.tag.Tag;
+import net.minecraft.tag.TagKey;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
@@ -26,6 +25,7 @@ import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.registry.Registry;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
@@ -39,7 +39,7 @@ public class CandleCandlestickBlock extends AbstractCandleBlock {
 	public static final DirectionProperty FACING;
 	private static final BooleanProperty LIT;
 	private static final VoxelShape DOWN_SHAPE, NORTH_SHAPE, EAST_SHAPE, SOUTH_SHAPE, WEST_SHAPE;
-	private static final Tag<Block> CANDLESTICKS;
+	public static final TagKey<Block> CANDLESTICKS;
 	private static final Map<Block, CandleCandlestickBlock> CANDLES_TO_CANDLESTICK;
 	private static final Iterable<Vec3d> DOWN_PARTICLE_OFFSETS, NORTH_PARTICLE_OFFSETS, EAST_PARTICLE_OFFSETS, SOUTH_PARTICLE_OFFSETS, WEST_PARTICLE_OFFSETS;
 
@@ -51,7 +51,7 @@ public class CandleCandlestickBlock extends AbstractCandleBlock {
 		EAST_SHAPE = VoxelShapes.union(CandlestickBlock.EAST_SHAPE, Block.createCuboidShape(13.0D, 6.0D, 7.0D, 15.0D, 12.0D, 9.0D));
 		SOUTH_SHAPE = VoxelShapes.union(CandlestickBlock.SOUTH_SHAPE, Block.createCuboidShape(7.0D, 6.0D, 13.0D, 9.0D, 12.0D, 15.0D));
 		WEST_SHAPE = VoxelShapes.union(CandlestickBlock.WEST_SHAPE, Block.createCuboidShape(1.0D, 6.0D, 7.0D, 3.0D, 12.0D, 9.0D));
-		CANDLESTICKS = TagFactory.BLOCK.create(new Identifier("candlestick", "candle_candlesticks"));
+		CANDLESTICKS = TagKey.of(Registry.BLOCK_KEY, new Identifier("candlestick", "candle_candlesticks"));
 		CANDLES_TO_CANDLESTICK = Maps.newHashMap();
 		DOWN_PARTICLE_OFFSETS = ImmutableList.of(new Vec3d(0.5D, 0.75D, 0.5D));
 		NORTH_PARTICLE_OFFSETS = ImmutableList.of(new Vec3d(0.5D, 0.85D, 0.125D));
