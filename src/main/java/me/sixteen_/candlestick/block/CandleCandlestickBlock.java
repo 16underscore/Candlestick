@@ -12,7 +12,6 @@ import net.minecraft.block.ShapeContext;
 import net.minecraft.entity.ai.pathing.NavigationType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.state.StateManager.Builder;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.DirectionProperty;
@@ -73,9 +72,7 @@ public class CandleCandlestickBlock extends AbstractCandleBlock {
 	}
 
 	public static boolean canBeLit(BlockState state) {
-		return state.isIn(CANDLESTICKS, statex -> {
-			return statex.contains(LIT) && !state.get(LIT);
-		});
+		return state.isIn(CANDLESTICKS, statex -> statex.contains(LIT) && !state.get(LIT));
 	}
 
 	@Override
@@ -101,12 +98,9 @@ public class CandleCandlestickBlock extends AbstractCandleBlock {
 
 	@Override
 	public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-		ItemStack itemStack = player.getStackInHand(hand);
-		if (!(itemStack.isOf(Items.FLINT_AND_STEEL) || itemStack.isOf(Items.FIRE_CHARGE))) {
-			if (player.getStackInHand(hand).isEmpty() && state.get(LIT)) {
-				extinguish(player, state, world, pos);
-				return ActionResult.success(world.isClient);
-			}
+		if (player.getStackInHand(hand).isEmpty() && state.get(LIT)) {
+			extinguish(player, state, world, pos);
+			return ActionResult.success(world.isClient);
 		}
 		return ActionResult.PASS;
 	}
