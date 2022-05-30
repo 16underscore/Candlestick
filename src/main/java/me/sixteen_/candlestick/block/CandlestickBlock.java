@@ -8,7 +8,6 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
@@ -25,9 +24,6 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.event.GameEvent;
 
-/**
- * @author 16_
- */
 public class CandlestickBlock extends AbstractCandlestickBlock {
 
 	public static final VoxelShape DOWN_SHAPE, NORTH_SHAPE, EAST_SHAPE, SOUTH_SHAPE, WEST_SHAPE;
@@ -46,19 +42,13 @@ public class CandlestickBlock extends AbstractCandlestickBlock {
 
 	@Override
 	public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-		switch (state.get(FACING)) {
-			case DOWN:
-			default:
-				return DOWN_SHAPE;
-			case NORTH:
-				return NORTH_SHAPE;
-			case SOUTH:
-				return SOUTH_SHAPE;
-			case WEST:
-				return WEST_SHAPE;
-			case EAST:
-				return EAST_SHAPE;
-		}
+		return switch (state.get(FACING)) {
+		case NORTH -> NORTH_SHAPE;
+		case SOUTH -> SOUTH_SHAPE;
+		case WEST -> WEST_SHAPE;
+		case EAST -> EAST_SHAPE;
+		default -> DOWN_SHAPE;
+		};
 	}
 
 	@Override
@@ -80,9 +70,6 @@ public class CandlestickBlock extends AbstractCandlestickBlock {
 			}
 			sound = SoundEvents.BLOCK_CANDLE_PLACE;
 			blockState = CandleCandlestickBlock.getCandlestickFromCandle(block);
-		} else if (itemStack.isOf(Items.SEA_PICKLE)) {
-			sound = SoundEvents.BLOCK_SLIME_BLOCK_PLACE;
-			blockState = CandlestickBlocks.SEA_PICKLE_CANDLESTICK.getDefaultState();
 		} else {
 			return ActionResult.PASS;
 		}

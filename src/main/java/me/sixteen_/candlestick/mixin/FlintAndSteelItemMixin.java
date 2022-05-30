@@ -19,9 +19,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.event.GameEvent;
 
-/**
- * @author 16_
- */
 @Mixin(FlintAndSteelItem.class)
 public abstract class FlintAndSteelItemMixin {
 
@@ -36,7 +33,7 @@ public abstract class FlintAndSteelItemMixin {
 			world.setBlockState(blockPos, blockState.with(Properties.LIT, true), Block.NOTIFY_ALL | Block.REDRAW_ON_MAIN_THREAD);
 			world.emitGameEvent(playerEntity, GameEvent.BLOCK_PLACE, blockPos);
 			if (playerEntity != null) {
-				context.getStack().damage(1, playerEntity, (p) -> {
+				context.getStack().damage(1, playerEntity, p -> {
 					p.sendToolBreakStatus(context.getHand());
 				});
 			}

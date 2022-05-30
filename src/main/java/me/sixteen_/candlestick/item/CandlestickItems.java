@@ -7,9 +7,6 @@ import net.minecraft.item.ItemGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
-/**
- * @author 16_
- */
 public class CandlestickItems {
 
 	public static final BlockItem CANDLESTICK;

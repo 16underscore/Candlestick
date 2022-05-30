@@ -31,9 +31,6 @@ import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 
-/**
- * @author 16_
- */
 public class CandleCandlestickBlock extends AbstractCandleBlock {
 
 	public static final DirectionProperty FACING;
@@ -41,7 +38,12 @@ public class CandleCandlestickBlock extends AbstractCandleBlock {
 	private static final VoxelShape DOWN_SHAPE, NORTH_SHAPE, EAST_SHAPE, SOUTH_SHAPE, WEST_SHAPE;
 	public static final TagKey<Block> CANDLESTICKS;
 	private static final Map<Block, CandleCandlestickBlock> CANDLES_TO_CANDLESTICK;
-	private static final Iterable<Vec3d> DOWN_PARTICLE_OFFSETS, NORTH_PARTICLE_OFFSETS, EAST_PARTICLE_OFFSETS, SOUTH_PARTICLE_OFFSETS, WEST_PARTICLE_OFFSETS;
+	private static final Iterable<Vec3d>
+		DOWN_PARTICLE_OFFSETS,
+		NORTH_PARTICLE_OFFSETS,
+		EAST_PARTICLE_OFFSETS,
+		SOUTH_PARTICLE_OFFSETS,
+		WEST_PARTICLE_OFFSETS;
 
 	static {
 		FACING = Properties.HOPPER_FACING;
@@ -71,26 +73,20 @@ public class CandleCandlestickBlock extends AbstractCandleBlock {
 	}
 
 	public static boolean canBeLit(BlockState state) {
-		return state.isIn(CANDLESTICKS, (statex) -> {
+		return state.isIn(CANDLESTICKS, statex -> {
 			return statex.contains(LIT) && !state.get(LIT);
 		});
 	}
 
 	@Override
 	public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-		switch (state.get(FACING)) {
-			case DOWN:
-			default:
-				return DOWN_SHAPE;
-			case NORTH:
-				return NORTH_SHAPE;
-			case SOUTH:
-				return SOUTH_SHAPE;
-			case WEST:
-				return WEST_SHAPE;
-			case EAST:
-				return EAST_SHAPE;
-		}
+		return switch (state.get(FACING)) {
+		case NORTH -> NORTH_SHAPE;
+		case SOUTH -> SOUTH_SHAPE;
+		case WEST -> WEST_SHAPE;
+		case EAST -> EAST_SHAPE;
+		default -> DOWN_SHAPE;
+		};
 	}
 
 	@Override
@@ -117,19 +113,13 @@ public class CandleCandlestickBlock extends AbstractCandleBlock {
 
 	@Override
 	protected Iterable<Vec3d> getParticleOffsets(BlockState state) {
-		switch (state.get(FACING)) {
-			case DOWN:
-			default:
-				return DOWN_PARTICLE_OFFSETS;
-			case NORTH:
-				return NORTH_PARTICLE_OFFSETS;
-			case SOUTH:
-				return SOUTH_PARTICLE_OFFSETS;
-			case WEST:
-				return WEST_PARTICLE_OFFSETS;
-			case EAST:
-				return EAST_PARTICLE_OFFSETS;
-		}
+		return switch (state.get(FACING)) {
+		case NORTH -> NORTH_PARTICLE_OFFSETS;
+		case SOUTH -> SOUTH_PARTICLE_OFFSETS;
+		case WEST -> WEST_PARTICLE_OFFSETS;
+		case EAST -> EAST_PARTICLE_OFFSETS;
+		default -> DOWN_PARTICLE_OFFSETS;
+		};
 	}
 
 	@Override

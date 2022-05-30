@@ -19,9 +19,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.event.GameEvent;
 
-/**
- * @author 16_
- */
 @Mixin(FireChargeItem.class)
 public abstract class FireChargeItemMixin {
 
