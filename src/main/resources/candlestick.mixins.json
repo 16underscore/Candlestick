@@ -1,13 +1,13 @@
 {
-  "required": true,
-  "minVersion": "0.8",
-  "package": "me.sixteen_.candlestick.mixin",
-  "compatibilityLevel": "JAVA_17",
-  "mixins": [
-	  "FireChargeItemMixin",
-                "FlintAndSteelItemMixin"
-  ],
-  "injectors": {
-    "defaultRequire": 1
-  }
+	"required": true,
+	"minVersion": "0.8",
+	"package": "me.sixteen_.candlestick.mixin",
+	"compatibilityLevel": "JAVA_17",
+	"mixins": [
+		"FireChargeItemMixin",
+		"FlintAndSteelItemMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	}
 }
